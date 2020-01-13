@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -28,8 +29,8 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping(value = "/user/login")
-    public String login(String username,
-                        String password, Model model,
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password, Model model,
                         Map<String, Object> map, HttpSession session) {
         //1.从数据库中取出存入的用户名和密码
 

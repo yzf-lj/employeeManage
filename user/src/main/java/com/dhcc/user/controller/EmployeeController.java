@@ -23,6 +23,7 @@ import java.util.List;
 public class EmployeeController {
 
     private String [] departments = {"研发部","财务部","人事部"};
+
     private Integer prevPage;
     private Integer nextPage;
 
@@ -104,11 +105,14 @@ public class EmployeeController {
     public String updateEmployee(Employee employee ,Model model){
 
         System.out.println("修改员工的数据:"+employee);
+//        employee.setId(id);
+
 
         int ret = employeeService.updateEmployee(employee);
+
         if (ret > 0){
             model.addAttribute("msg","修改成功。");
-            return "redirect:/emps";
+            return "redirect:/emps/1";
         }
         else {
             model.addAttribute("msg","修改失败.");
